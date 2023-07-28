@@ -31,7 +31,7 @@ def get_categories(file_path,lang):
 
 def get_page(category,lang):
     wiki_wiki = wikipediaapi.Wikipedia(
-        "MastodonBot/0.0 development",
+        "planetary-ecologist/0.1.0 (+https://github.com/kalab-oto/planetary-ecologist)",
         lang)
     cat_page = wiki_wiki.page(f"Category:{category}")
     articles = list(cat_page.categorymembers.values())
