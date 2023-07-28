@@ -141,7 +141,6 @@ def main():
                 post_body = get_text(random_page,500-len_post)
 
                 post_content = f"{post_head}\n\n{post_body}\n\n{post_url}\n\n{post_hashtags}"
-                len_cont = len(post_content)
                 wiki_image = get_image(random_page,l)
 
                 mastodon = Mastodon(
