@@ -23,8 +23,8 @@ jobs:
           
       - name: execute py script
         env:
-          MSTDN_CS: ${{ secrets.MSTDN_CS}}
-          MSTDN_EN: ${{ secrets.MSTDN_EN}}
+          TOKEN_CS: ${{ secrets.TOKEN_CS}}
+          TOKEN_EN: ${{ secrets.TOKEN_EN}}
         run: python main.py
           
       - name: commit files
