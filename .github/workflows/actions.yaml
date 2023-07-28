@@ -24,8 +24,8 @@ jobs:
           
       - name: execute py script
         env:
-          TOKEN_CS: ${{ secrets.TOKEN_CS}}
-          TOKEN_EN: ${{ secrets.TOKEN_EN}}
+          TOKEN_CS: ${{ secrets.TOKEN_CS }}
+          TOKEN_EN: ${{ secrets.TOKEN_EN }}
         run: python main.py
           
       - name: commit files
