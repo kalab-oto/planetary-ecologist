@@ -25,7 +25,7 @@ jobs:
         env:
           TOKEN_CS: ${{ secrets.TOKEN_CS }}
           TOKEN_EN: ${{ secrets.TOKEN_EN }}
-        run: python main.py
+        run: python planetaryecologist.py
           
       - name: commit files
         run: |
