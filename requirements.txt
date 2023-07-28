@@ -1,4 +1,4 @@
-mastodon==0.0.1
+Mastodon.py==1.8.1
 Requests==2.31.0
 Unidecode==1.3.6
 Wikipedia_API==0.6.0
