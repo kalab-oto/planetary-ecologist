@@ -1,4 +1,5 @@
 import random
+import os
 import re
 import wikipediaapi
 import requests
@@ -15,8 +16,8 @@ IMG_REQUEST = {
 }
 
 mastodon_secrets = {
-    'cs': 'token_cs.secret',
-    'en': 'token_en.secret'
+    'cs': os.environ['TOKEN_CS'],
+    'en': os.environ['TOKEN_EN']
 }
 
 def get_categories(file_path,lang):
