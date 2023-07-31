@@ -57,8 +57,6 @@ def get_hashtags(page,lang):
     hash_1 = "#"+hash_1.title().replace(' ', '')
 
     hash_2 = list(page.categories.keys())
-    if len(hash_1) < 20:
-        hash_2.insert(0,hash_1)
     hash_2 = [x.lower() for x in hash_2]
     remove_cats = [
         "articles",
@@ -96,7 +94,7 @@ def get_hashtags(page,lang):
     unique_hash = list(set(hash_2))
     hash_2 = " ".join(unique_hash)
 
-    hashtags = unidecode(hash_2)
+    hashtags = unidecode(hash_1 + ' ' +hash_2)
     return hashtags
 
 def get_url(page,lang):
