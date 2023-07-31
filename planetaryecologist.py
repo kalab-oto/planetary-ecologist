@@ -92,7 +92,9 @@ def get_hashtags(page,lang):
 
     hash_2 = hash_2.split()
     unique_hash = list(set(hash_2))
-    hash_2 = " ".join(unique_hash)
+    sorted_list = sorted(unique_hash, key=len)
+    hash_2_list = sorted_list[:5]
+    hash_2 = " ".join(hash_2_list)
 
     hashtags = unidecode(hash_1 + ' ' +hash_2)
     return hashtags
