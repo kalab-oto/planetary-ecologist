@@ -54,7 +54,7 @@ def get_text(page,maxchar):
 
 def get_hashtags(page,lang):
     hash_1 = re.sub(r"\([^)]*\)", "", page.title)
-    hash_1 = "#"+"".join(hash_1.split()).lower()
+    hash_1 = "#"+hash_1.title().replace(' ', '')
 
     hash_2 = list(page.categories.keys())
     if len(hash_1) < 20:
@@ -87,7 +87,7 @@ def get_hashtags(page,lang):
 
     hash_2 = " ".join(hash_2)
     hash_2 = re.sub("kategorie:|category:", "#", hash_2)
-    hash_2 = "".join(hash_2.split())
+    hash_2 = hash_2.title().replace(' ', '')
     hash_2 = re.sub("#", " #", hash_2)
     hash_2 = re.sub(r"[\(\[].*?[\)\]]", "", hash_2)
     hash_2 = re.sub(r"[^\w#\s]", "", hash_2)
