@@ -86,12 +86,7 @@ def get_hashtags(page,lang):
     hash_2 = [item for item in hash_2 if len(item) <= 35]
 
     hash_2 = " ".join(hash_2)
-    if lang == 'cs':
-        hash_2 = re.sub("kategorie:", "#", hash_2)
-        wikihash = "#wikipedie"
-    else:
-        hash_2 = re.sub("category:", "#", hash_2)
-        wikihash = "#wikipedia"
+    hash_2 = re.sub("kategorie:|category:", "#", hash_2)
     hash_2 = "".join(hash_2.split())
     hash_2 = re.sub("#", " #", hash_2)
     hash_2 = re.sub(r"[\(\[].*?[\)\]]", "", hash_2)
@@ -101,7 +96,7 @@ def get_hashtags(page,lang):
     unique_hash = list(set(hash_2))
     hash_2 = " ".join(unique_hash)
 
-    hashtags = unidecode(hash_2+" "+wikihash).strip()
+    hashtags = unidecode(hash_2)
     return hashtags
 
 def get_url(page,lang):
