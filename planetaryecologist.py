@@ -30,10 +30,10 @@ def get_categories(file_path,lang):
     return categories
 
 def get_page(category,lang):
-    wiki_wiki = wikipediaapi.Wikipedia(
+    wiki = wikipediaapi.Wikipedia(
         "planetary-ecologist/0.1.0 (+https://github.com/kalab-oto/planetary-ecologist)",
         lang)
-    cat_page = wiki_wiki.page(f"Category:{category}")
+    cat_page = wiki.page(f"Category:{category}")
     articles = list(cat_page.categorymembers.values())
     random_article = random.choice(articles)
 
@@ -53,11 +53,11 @@ def get_text(page,maxchar):
     return text
 
 def get_hashtags(page,lang):
-    hash_1 = re.sub(r"\([^)]*\)", "", page.title)
-    hash_1 = "#"+hash_1.title().replace(' ', '')
+    hash_title = re.sub(r"\([^)]*\)", "", page.title)
+    hash_title = "#"+hash_title.title().replace(' ', '')
 
-    hash_2 = list(page.categories.keys())
-    hash_2 = [x.lower() for x in hash_2]
+    hash_cats = list(page.categories.keys())
+    hash_cats = [x.lower() for x in hash_cats]
     remove_cats = [
         "articles",
         "cs1",
@@ -80,24 +80,24 @@ def get_hashtags(page,lang):
         "kategorie:pahýly"
         ] 
     filter_cond = lambda item: all(x not in item for x in remove_cats)
-    hash_2 = list(filter(filter_cond, hash_2))
-    hash_2 = [item for item in hash_2 if len(item) <= 35]
+    hash_cats = list(filter(filter_cond, hash_cats))
+    hash_cats = [item for item in hash_cats if len(item) <= 35]
 
-    hash_2 = " ".join(hash_2)
-    hash_2 = re.sub("kategorie:|category:", "#", hash_2)
-    hash_2 = hash_2.title().replace(' ', '')
-    hash_2 = re.sub("#", " #", hash_2)
-    hash_2 = re.sub(r"[\(\[].*?[\)\]]", "", hash_2)
-    hash_2 = re.sub(r"[^\w#\s]", "", hash_2)
+    hash_cats = " ".join(hash_cats)
+    hash_cats = re.sub("kategorie:|category:", "#", hash_cats)
+    hash_cats = hash_cats.title().replace(' ', '')
+    hash_cats = re.sub("#", " #", hash_cats)
+    hash_cats = re.sub(r"[\(\[].*?[\)\]]", "", hash_cats)
+    hash_cats = re.sub(r"[^\w#\s]", "", hash_cats)
 
-    hash_2 = hash_2.split()
-    if hash_1 in hash_2:
-        hash_2.remove(hash_1)
-    sorted_list = sorted(hash_2, key=len)
-    hash_2_list = sorted_list[:5]
-    hash_2 = " ".join(hash_2_list)
+    hash_cats = hash_cats.split()
+    if hash_title in hash_cats:
+        hash_cats.remove(hash_title)
+    sorted_list = sorted(hash_cats, key=len)
+    hash_cats_list = sorted_list[:5]
+    hash_cats = " ".join(hash_cats_list)
 
-    hashtags = unidecode(hash_1 + ' ' +hash_2)
+    hashtags = unidecode(hash_title + ' ' +hash_cats)
     return hashtags
 
 def get_url(page,lang):
