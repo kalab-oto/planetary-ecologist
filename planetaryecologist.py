@@ -91,8 +91,9 @@ def get_hashtags(page,lang):
     hash_2 = re.sub(r"[^\w#\s]", "", hash_2)
 
     hash_2 = hash_2.split()
-    unique_hash = list(set(hash_2))
-    sorted_list = sorted(unique_hash, key=len)
+    if hash_1 in hash_2:
+        hash_2.remove(hash_1)
+    sorted_list = sorted(hash_2, key=len)
     hash_2_list = sorted_list[:5]
     hash_2 = " ".join(hash_2_list)
 
