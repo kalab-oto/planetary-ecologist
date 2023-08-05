@@ -87,8 +87,6 @@ def get_hashtags(page,lang):
     hash_cats = re.sub("kategorie:|category:", "#", hash_cats)
     hash_cats = hash_cats.title().replace(' ', '')
     hash_cats = re.sub("#", " #", hash_cats)
-    hash_cats = re.sub(r"[\(\[].*?[\)\]]", "", hash_cats)
-    hash_cats = re.sub(r"[^\w#\s]", "", hash_cats)
 
     hash_cats = hash_cats.split()
     if hash_title in hash_cats:
@@ -98,6 +96,8 @@ def get_hashtags(page,lang):
     hash_cats = " ".join(hash_cats_list)
 
     hashtags = unidecode(hash_title + ' ' +hash_cats)
+    hashtags = re.sub(r"[\(\[].*?[\)\]]", "", hashtags)
+    hashtags = re.sub(r"[^\w#\s]", "", hashtags)
     return hashtags
 
 def get_url(page,lang):
