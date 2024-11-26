@@ -142,7 +142,7 @@ def main():
 
                 mastodon = Mastodon(
                     access_token = mastodon_secrets[l],
-                    api_base_url = 'https://botsin.space/'
+                    api_base_url = 'https://mastodon.social/'
                 )
                 if wiki_image is None:
                     mastodon.status_post(post_content, language = l)
